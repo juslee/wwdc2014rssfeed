@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:xhtml="http://www.w3.org/1999/xhtml" version="2.0">
+<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0">
   <channel><title>WWDC 2014 Session Videos - Apple Developer</title><description>WWDC 2014 Session Videos - Apple Developer</description><link>https://developer.apple.com/videos/wwdc/2014/</link><language>en-US</language><itunes:complete>yes</itunes:complete><itunes:author>Justin Lee</itunes:author><itunes:explicit>clean</itunes:explicit><itunes:image href="http://a5.mzstatic.com/us/r30/Purple4/v4/77/14/5b/77145bdf-5b2b-19c2-2805-08be02421dd2/mzl.zmbxpsdd.350x350-75.jpg"/>
   
 

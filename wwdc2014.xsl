@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
 				xmlns:xhtml="http://www.w3.org/1999/xhtml"
-				xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+				xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+                xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+    <xsl:param name="quality" as="xs:string" select="'hd'"/>
     <xsl:output method="xml" indent="yes" />
 
     <xsl:template match="/"> 
@@ -34,13 +36,24 @@
     		<title><xsl:value-of select="xhtml:ul/xhtml:li[@class='title']"/></title>
     		<itunes:subtitle><xsl:value-of select="normalize-space(xhtml:div/xhtml:div[@class='description active']/xhtml:p[1])"/></itunes:subtitle>
     		<itunes:summary><xsl:value-of select="normalize-space(xhtml:div/xhtml:div[@class='description active']/xhtml:p[1])"/></itunes:summary>
-    		<enclosure>
-    			<xsl:attribute name="url">
-    				<xsl:value-of select="xhtml:div/xhtml:div[@class='description active']/xhtml:p[@class='download']/xhtml:a[1]/@href"/>
-  				</xsl:attribute>
-  				<xsl:attribute name="type">video/quicktime</xsl:attribute>
-  			</enclosure>
-            <guid><xsl:value-of select="xhtml:div/xhtml:div[@class='description active']/xhtml:p[@class='download']/xhtml:a[1]/@href"/></guid>
+    		<xsl:if test="$quality = 'hd'">
+                <enclosure>
+        			<xsl:attribute name="url">
+        				<xsl:value-of select="xhtml:div/xhtml:div[@class='description active']/xhtml:p[@class='download']/xhtml:a[1]/@href"/>
+      				</xsl:attribute>
+      				<xsl:attribute name="type">video/quicktime</xsl:attribute>
+      			</enclosure>
+                <guid><xsl:value-of select="xhtml:div/xhtml:div[@class='description active']/xhtml:p[@class='download']/xhtml:a[1]/@href"/></guid>
+            </xsl:if>
+            <xsl:if test="$quality = 'sd'">
+                <enclosure>
+                    <xsl:attribute name="url">
+                        <xsl:value-of select="xhtml:div/xhtml:div[@class='description active']/xhtml:p[@class='download']/xhtml:a[2]/@href"/>
+                    </xsl:attribute>
+                    <xsl:attribute name="type">video/quicktime</xsl:attribute>
+                </enclosure>
+                <guid><xsl:value-of select="xhtml:div/xhtml:div[@class='description active']/xhtml:p[@class='download']/xhtml:a[2]/@href"/></guid>
+            </xsl:if>
   			<pubDate>Sun, 15 Jun 2014 19:00:00 +0000</pubDate>
     	</item>
     </xsl:template>
